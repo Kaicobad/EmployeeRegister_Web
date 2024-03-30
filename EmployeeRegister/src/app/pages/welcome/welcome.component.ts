@@ -5,6 +5,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { GenderService } from '../../app.services/gender.service';
 
 @Component({
   selector: 'app-welcome',
@@ -15,10 +16,31 @@ import { FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Va
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor(private fb : NonNullableFormBuilder) { }
+  GenderList : any
+  selectedUser = null
+  constructor(private fb : NonNullableFormBuilder, private GenderService: GenderService) 
+  {
 
-  ngOnInit() { }
+  }
 
+  ngOnInit() 
+  {
+    this.getGender();
+   }
+
+  getGender()
+  {
+    this.GenderService.GetGenders().subscribe(
+        (response) => 
+        {
+          console.log('response received')
+          this.GenderList = response; 
+        },
+        (error) => 
+        {                             
+          console.error('Request failed with error')
+        })
+  }
   validateForm: FormGroup<{
     userName: FormControl<string>;
     password: FormControl<string>;
