@@ -7,7 +7,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { GenderService } from '../../app.services/gender.service';
-import { provideRouter } from '@angular/router';
+import { Route, Router, provideRouter } from '@angular/router';
 import { routes } from '../../app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { BasicInfoComponent } from "../../app.employeeInfo/basic-info/basic-info.component";
@@ -20,6 +20,7 @@ import { PassportInfoComponent } from "../../app.employeeInfo/passport-info/pass
 import { DrivingLicenseInfoComponent } from "../../app.employeeInfo/driving-license-info/driving-license-info.component";
 import { ReferencesInfoComponent } from "../../app.employeeInfo/references-info/references-info.component";
 import { EmployeePhotoComponent } from "../../app.employeeInfo/employee-photo/employee-photo.component";
+import { RouterModule } from '@angular/router';
 export const appConfig: ApplicationConfig = {
   providers: [provideHttpClient(withFetch()), provideRouter(routes), provideClientHydration()]
 };
@@ -28,7 +29,26 @@ export const appConfig: ApplicationConfig = {
     standalone: true,
     templateUrl: './welcome.component.html',
     styleUrls: ['./welcome.component.css'],
-    imports: [NzTabsModule, NzSelectModule, NzGridModule, NzFormModule, NzInputModule, ReactiveFormsModule, BasicInfoComponent, PersonalInfoComponent, NomineeInfoComponent, ContactInfoComponent, EducationInfoComponent, TrainingInfoComponent, PassportInfoComponent, DrivingLicenseInfoComponent, ReferencesInfoComponent, EmployeePhotoComponent]
+    imports: 
+    [
+      RouterModule,
+      NzTabsModule, 
+      NzSelectModule, 
+      NzGridModule, 
+      NzFormModule, 
+      NzInputModule, 
+      ReactiveFormsModule, 
+      BasicInfoComponent, 
+      PersonalInfoComponent, 
+      NomineeInfoComponent, 
+      ContactInfoComponent, 
+      EducationInfoComponent, 
+      TrainingInfoComponent, 
+      PassportInfoComponent, 
+      DrivingLicenseInfoComponent, 
+      ReferencesInfoComponent, 
+      EmployeePhotoComponent
+    ]
 })
 export class WelcomeComponent implements OnInit {
 
@@ -43,7 +63,6 @@ export class WelcomeComponent implements OnInit {
   {
     // this.getGender();
    }
-
   // getGender()
   // {
   //   this.GenderService.GetGenders().subscribe(
