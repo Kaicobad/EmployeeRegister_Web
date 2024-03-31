@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class GenderService {
+export class CompanyService {
   constructor(private _HttpClient: HttpClient) {}
 
   baseURL = environment.apiUrl;
 
-  GetGenders(): Observable<any> {
-    return this._HttpClient.get(this.baseURL + 'Gender/GetAllgenders');
+  GetCompanies(): Observable<any> {
+    return this._HttpClient.get(this.baseURL + 'Company/GetAllCompanies');
   }
 }

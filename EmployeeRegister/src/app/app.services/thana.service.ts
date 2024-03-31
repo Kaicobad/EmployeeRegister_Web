@@ -6,12 +6,14 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class GenderService {
+export class ThanaService {
   constructor(private _HttpClient: HttpClient) {}
 
   baseURL = environment.apiUrl;
 
-  GetGenders(): Observable<any> {
-    return this._HttpClient.get(this.baseURL + 'Gender/GetAllgenders');
+  GetEThanas(): Observable<any> {
+    return this._HttpClient.get(
+      this.baseURL + 'Location/GetAllThanas'
+    );
   }
 }
